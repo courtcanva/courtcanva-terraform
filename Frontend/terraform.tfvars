@@ -1,0 +1,6 @@
+zone_id = "Z063690631XYTC15Y2L9C"
+aw_static_web = ""
+region = ""
+bucket_name = ""
+domain_name = ""
+environment = ""
