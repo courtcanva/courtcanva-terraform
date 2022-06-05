@@ -39,5 +39,32 @@ resource "aws_instance" "jenkins-instance" {
 
   # user data
   user_data = file("jenkins_init.sh")
+  
+  root_block_device {
+    volume_type = "gp2"
+    volume_size = "40"
+  }
+}
+resource "aws_eip_association" "jenkins_eip_assos" {
+  instance_id   = aws_instance.jenkins_host.id
+  allocation_id = data.aws_eip.jenkins_eip.id
+}
 
+
+resource "aws_ebs_volume" "jenkins_volume_ebs" {
+  availability_zone = "ap-southeast-2c"
+  size              = "50"
+  type              = "gp2"
+  tags = {
+    Name = "Jenknis"
+  }
+  lifecycle {
+    prevent_destroy = false
+  }
+
+}
+resource "aws_volume_attachment" "jenkins_volume_ebs_att" {
+  device_name = "/dev/sdh"  #name seen in ebs volume, in ec2 it is "/dev/nvme1n1" 
+  volume_id   = aws_ebs_volume.jenkins_volume_ebs.id
+  instance_id = aws_instance.jenkins_host.id
 }
