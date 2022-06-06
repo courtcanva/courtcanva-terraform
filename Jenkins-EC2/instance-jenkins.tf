@@ -46,15 +46,15 @@ resource "aws_instance" "jenkins-instance" {
   }
 }
 
-data "aws_eip" "jenkins_eip" {
+/*data "aws_eip" "jenkins_eip" {
   filter {
     name   = "tag:EIP"
     values = ["Jenkins"]
   }
-}
+}*/
 resource "aws_eip_association" "jenkins_eip_assos" {
   instance_id   = aws_instance.jenkins-instance.id
-  allocation_id = data.aws_eip.jenkins_eip.id
+  allocation_id = "eipalloc-09155bdb05bd13d10"
 }
 
 
