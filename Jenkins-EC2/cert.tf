@@ -6,7 +6,7 @@ provider "aws" {
 
 
 resource "aws_acm_certificate" "alb-jenkins" {
-  provider = "aws.acm"
+  provider = aws.acm
   domain_name = "${var.website_jenkins}"
   subject_alternative_names = ["*.${var.website_jenkins}"]
   validation_method = "DNS"
@@ -47,7 +47,7 @@ for_each = {
 
 
 resource "aws_acm_certificate_validation" "alb-jenkins" {
-  provider = "aws.acm"
+  provider = aws.acm
   certificate_arn = "${aws_acm_certificate.alb-jenkins.arn}"
   validation_record_fqdns = [for record in aws_route53_record.alb-jenkins : record.fqdn]
   # validation_record_fqdns = [
