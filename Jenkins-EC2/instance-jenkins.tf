@@ -45,8 +45,15 @@ resource "aws_instance" "jenkins-instance" {
     volume_size = "40"
   }
 }
+
+data "aws_eip" "jenkins_eip" {
+  filter {
+    name   = "tag:EIP"
+    values = ["Jenkins"]
+  }
+}
 resource "aws_eip_association" "jenkins_eip_assos" {
-  instance_id   = aws_instance.jenkins_host.id
+  instance_id   = aws_instance.jenkins-instance.id
   allocation_id = data.aws_eip.jenkins_eip.id
 }
 
@@ -66,5 +73,5 @@ resource "aws_ebs_volume" "jenkins_volume_ebs" {
 resource "aws_volume_attachment" "jenkins_volume_ebs_att" {
   device_name = "/dev/sdh"  #name seen in ebs volume, in ec2 it is "/dev/nvme1n1" 
   volume_id   = aws_ebs_volume.jenkins_volume_ebs.id
-  instance_id = aws_instance.jenkins_host.id
+  instance_id = aws_instance.jenkins-instance.id
 }
