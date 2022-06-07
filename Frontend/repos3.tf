@@ -9,14 +9,14 @@ resource "aws_s3_bucket" "repo_bucket" {
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::cc.frontend.artifact.repo/*"
+            "Resource": "arn:aws:s3:::frontend.artifact.repo/*"
         },
         {
             "Sid": "AllObjectActions",
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:*Object",
-            "Resource": "arn:aws:s3:::cc.frontend.artifact.repo/*"
+            "Resource": "arn:aws:s3:::frontend.artifact.repo/*"
         }
     ]
 }
