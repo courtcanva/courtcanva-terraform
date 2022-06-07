@@ -7,7 +7,7 @@
 #
 
 resource "aws_vpc" "demo" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "10.7.0.0/16"
   
  tags = {
     Name = "jenkins-VPC"
@@ -20,7 +20,7 @@ resource "aws_subnet" "demo" {
   count = 2
 
   availability_zone       = data.aws_availability_zones.available.names[count.index]
-  cidr_block              = "10.0.${count.index}.0/24"
+  cidr_block              = "10.7.${count.index}.0/24"
   map_public_ip_on_launch = true
   vpc_id                  = aws_vpc.demo.id
  
