@@ -6,7 +6,7 @@ provider "aws" {
   region = var.aws_region
 default_tags {
     tags = {
-      Environment = "UAT"
+      name = "JenkinsEC2"
       Project        = "Courtcanva"
     }
   }
