@@ -1,4 +1,4 @@
-aws_region ="ap-southeast-2"
+aws_region ="us-west-2"
 
 public_key_location= "/home/jenkins/.ssh/id_rsa.pub"
  
