@@ -69,9 +69,9 @@ resource "aws_eip_association" "jenkins_eip_assos" {
     prevent_destroy = false
   }*/
 
-}
+#}
 resource "aws_volume_attachment" "jenkins_volume_ebs_att" {
   device_name = "/dev/sdh"  #name seen in ebs volume, in ec2 it is "/dev/nvme1n1" 
-  volume_id   = "	vol-04fe534548674e16f"
+  volume_id   = "vol-04fe534548674e16f"
   instance_id = aws_instance.jenkins-instance.id
 }
