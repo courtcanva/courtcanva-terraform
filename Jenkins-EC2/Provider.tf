@@ -3,6 +3,9 @@ terraform {
 }
 
 provider "aws" {
+  shared_credentials_file = "$HOME/jenkins/.aws/credentials"
+  profile                 = "default"
+
   region = var.aws_region
 default_tags {
     tags = {
