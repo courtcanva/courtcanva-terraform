@@ -54,7 +54,7 @@ resource "aws_instance" "jenkins-instance" {
 }*/
 resource "aws_eip_association" "jenkins_eip_assos" {
   instance_id   = aws_instance.jenkins-instance.id
-  allocation_id = "eipalloc-09155bdb05bd13d10"
+  allocation_id = "eipalloc-06b4ec72567257c1e"
 }
 
 
@@ -72,6 +72,6 @@ resource "aws_eip_association" "jenkins_eip_assos" {
 #}
 resource "aws_volume_attachment" "jenkins_volume_ebs_att" {
   device_name = "/dev/sdh"  #name seen in ebs volume, in ec2 it is "/dev/nvme1n1" 
-  volume_id   = "vol-04fe534548674e16f"
+  volume_id   = "vol-00880bb8554dbf682"
   instance_id = aws_instance.jenkins-instance.id
 }
