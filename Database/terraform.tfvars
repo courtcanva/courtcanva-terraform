@@ -16,10 +16,10 @@ atlasorgid = "6280aadbe8b5363a7e65adf5"
   
 atlas_vpc_cidr = "192.168.128.0/21"
 
-mongodbprojectname = "ccuatDB"
+mongodbprojectname = "cc-uat-DB"
 
-clustername = "ccuatcluster"
+clustername = "cc-uat-cluster"
 environment = "UAT"
 dbvpc = "10.10.0.0"
 dbsubnet = "10.10.1.0"
-ECSNatGatewayEIP = ""
+ECSNatGatewayEIP = "0.0.0.0"
