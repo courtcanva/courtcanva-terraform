@@ -59,7 +59,7 @@ resource "aws_eip_association" "jenkins_eip_assos" {
 
 
 /*resource "aws_ebs_volume" "jenkins_volume_ebs" {
-  availability_zone = "ap-southeast-2c"
+  availability_zone = "us-west-2a"
   size              = "50"
   type              = "gp2"
   tags = {
@@ -72,6 +72,6 @@ resource "aws_eip_association" "jenkins_eip_assos" {
 }
 resource "aws_volume_attachment" "jenkins_volume_ebs_att" {
   device_name = "/dev/sdh"  #name seen in ebs volume, in ec2 it is "/dev/nvme1n1" 
-  volume_id   = "vol-020312662acf187a2"
+  volume_id   = "	vol-04fe534548674e16f"
   instance_id = aws_instance.jenkins-instance.id
 }
