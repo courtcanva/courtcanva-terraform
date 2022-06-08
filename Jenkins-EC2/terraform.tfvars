@@ -11,3 +11,6 @@ website_jenkins="jenkinssl.courtcanva.com"
 
 health_check_path = "/login"
 
+jenkins_volume = ""
+
+jenkins_eip = ""
