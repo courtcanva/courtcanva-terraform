@@ -1,23 +1,38 @@
-[
-  {
-    "name": "${name}-${env}-container",
-    "image": "${app_image}",
-    "cpu": ${fargate_cpu},
-    "memory": ${fargate_memory},
+{
+    "family": "CCS-F-UAT-TASKD",
     "networkMode": "awsvpc",
-    "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "/ecs/${name}-${env}",
-          "awslogs-region": "${aws_region}",
-          "awslogs-stream-prefix": "ecs"
+    "containerDefinitions": [
+        {
+            "name": "CCS-F-UAT-CONTAINER",
+            "image": "{{image}}",
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp"
+                }
+            ],
+            "secrets": [
+                {
+                  "name": "PORT",
+                  "valueFrom": "arn:aws:ssm:ap-southeast-2:497551902879:parameter/PORT"
+                },
+                {
+                    "name": "API_PREFIX",
+                    "valueFrom": "arn:aws:ssm:ap-southeast-2:497551902879:parameter/API_PREFIX"
+                  },
+                  {
+                    "name": "MONGO_URI",
+                    "valueFrom": "arn:aws:ssm:ap-southeast-2:497551902879:parameter/MONGO_URI"
+                  }
+              ],
+              "essential": true
         }
-    },
-    "portMappings": [
-      {
-        "containerPort": ${app_port},
-        "hostPort": ${app_port}
-      }
-    ]
-  }
-]
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1vCPU",
+    "memory": "2GB",
+    "executionRoleArn": "arn:aws:iam::497551902879:role/ecsTaskExecutionRole"
+}
