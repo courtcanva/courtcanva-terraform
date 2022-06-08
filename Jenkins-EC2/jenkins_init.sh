@@ -35,7 +35,9 @@ sudo systemctl start apache2
 cd /var/www/html
 echo "<html><h1> Jenkins is healthy</h1></html>" > index.html 
 
-apt install npm -y 
+sudo apt update && sudo apt upgrade
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install nodejs -y 
 npm i next -y
 
 #mount ebs
