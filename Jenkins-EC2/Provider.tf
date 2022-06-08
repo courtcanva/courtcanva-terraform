@@ -20,6 +20,16 @@ default_tags {
 
 }
 
+terraform {
+  backend "s3" {
+    bucket         = "cc-tfstate-for-pipeline"
+    key            = "UAT/JenkinsEC2/terraform.tfstate"
+    region         = "ap-southeast-2"
+    dynamodb_table = "cc-infra-tfstate"
+  }
+}
+
+
 data "aws_availability_zones" "available" {}
 
 
