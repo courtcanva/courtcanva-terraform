@@ -54,7 +54,7 @@ resource "aws_instance" "jenkins-instance" {
 }*/
 resource "aws_eip_association" "jenkins_eip_assos" {
   instance_id   = aws_instance.jenkins-instance.id
-  allocation_id = "eipalloc-06b4ec72567257c1e"
+  allocation_id = "eipalloc-07c997941ad48997a"
 }
 
 
