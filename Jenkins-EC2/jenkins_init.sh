@@ -49,7 +49,7 @@ sudo chmod 666 /etc/fstab
 sudo echo UUID=$(blkid |grep nvme1n1 |awk -F "\"" '{print $2}') /var/jenkins_home xfs defaults,nofail 0 2 >>/etc/fstab
 sudo chmod 644 /etc/fstab
 #change jenkins home path
-chown jenkins:jenkins /var/jenkins_home
+chown -R jenkins:jenkins /var/jenkins_home
 cp -r /var/lib/jenkins /var/jenkins_home 
 cp * -r .bash_history .cache .groovy .java .lastStarted .viminfo /var/jenkins_home
 usermod -d /var/jenkins_home/ jenkins
