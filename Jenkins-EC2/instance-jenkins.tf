@@ -31,8 +31,17 @@ resource "aws_instance" "jenkins-instance" {
 # vailability zone
   availability_zone       = "ap-southeast-2a" ##data.aws_availability_zones.available.names[0]
 
+  data "aws_key_pair" "ssh" {
+  key_name = "jenkinsec2keypair"
+  filter {
+    name   = "tag:KeyPair"
+    values = ["JenkinsKey"]
+  }
+}
+
+  
   # the public SSH key
-  key_name = aws_key_pair.ssh-key.key_name
+  key_name = data.aws_key_pair.ssh.key_name
  
   associate_public_ip_address = true 
 
