@@ -1,6 +1,6 @@
 aws_region ="us-west-2"
 
-public_key_location= "/home/ubuntu/.ssh/authorized_keys"
+public_key_location= "/home/jenkins/.ssh/id_rsa.pub"
 
 
 instance_type = "t3.medium"
