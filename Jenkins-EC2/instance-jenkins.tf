@@ -29,7 +29,7 @@ resource "aws_instance" "jenkins-instance" {
   vpc_security_group_ids = [aws_security_group.sg-jenkins.id]
 
 # vailability zone
-  availability_zone       = "us-west-2a" ##data.aws_availability_zones.available.names[0]
+  availability_zone       = "ap-southeast-2" ##data.aws_availability_zones.available.names[0]
 
   # the public SSH key
   key_name = aws_key_pair.ssh-key.key_name
