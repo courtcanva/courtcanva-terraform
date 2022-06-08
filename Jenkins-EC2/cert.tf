@@ -1,6 +1,6 @@
 provider "aws" {
   alias = "acm"
-  region = "us-west-2"
+  region = "ap-southeast-2"
 #  version = "2.24"
 }
 
