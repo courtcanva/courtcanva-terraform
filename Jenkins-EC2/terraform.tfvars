@@ -13,4 +13,4 @@ health_check_path = "/login"
 
 jenkins_volume = "vol-07dca725444b0638d"
 
-jenkins_eip = "eipalloc-09155bdb05bd13d10 "
+jenkins_eip = "eipalloc-09155bdb05bd13d10"
