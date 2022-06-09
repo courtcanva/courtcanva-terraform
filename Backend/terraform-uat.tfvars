@@ -22,7 +22,7 @@ fargate_memory="2048"
 
 website_name = "uat.api.courtcanva.com"
 
-
+ecrname="cc-backend-imagerepo"
 
 
   
