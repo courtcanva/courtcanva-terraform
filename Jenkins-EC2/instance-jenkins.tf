@@ -23,7 +23,7 @@
 }
 
 resource "aws_instance" "jenkins-instance" {
-  ami   = var.aw_ami
+  ami   ="${var.aw_ami}"
   instance_type = "${var.instance_type}"
 
    tags = {
