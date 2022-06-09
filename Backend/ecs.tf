@@ -5,19 +5,19 @@ resource "aws_ecs_cluster" "main" {
 }
 
 
-data "template_file" "myapp" {
-  template = file("./template/myapp.json.tpl")
+# data "template_file" "myapp" {
+#   template = file("./template/myapp.json.tpl")
 
-  vars = {
-    app_image      = var.app_image
-    app_port       = var.app_port
-    fargate_cpu    = var.fargate_cpu
-    fargate_memory = var.fargate_memory
-    aws_region     = var.aws_region
-    name           = var.name
-    env            = var.env
-  }
-}
+#   vars = {
+#     app_image      = var.app_image
+#     app_port       = var.app_port
+#     fargate_cpu    = var.fargate_cpu
+#     fargate_memory = var.fargate_memory
+#     aws_region     = var.aws_region
+#     name           = var.name
+#     env            = var.env
+#   }
+# }
 
 resource "aws_ecs_task_definition" "app" {
   family                   = "${var.name}-${var.env}-TASKD"
@@ -26,7 +26,7 @@ resource "aws_ecs_task_definition" "app" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
-  container_definitions    = data.template_file.myapp.rendered
+  container_definitions    = "${file("taskdf.json.tpl")}"
 }
 
 
