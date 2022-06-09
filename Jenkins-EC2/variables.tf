@@ -3,10 +3,6 @@ variable "aws_region" {
 }
 
 
-variable "public_key_location" {  
-   
- }
-
 variable "instance_type"{ 
    
 }
