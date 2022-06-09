@@ -1,6 +1,6 @@
 aws_region = "ap-southeast-2"
 
-name ="CCS"
+name ="CCS-F"
 
 env  ="UAT"
 
