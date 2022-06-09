@@ -1,3 +1,4 @@
+[
 {
     "family": "CCS-F-UAT-TASKD",
     "networkMode": "awsvpc",
@@ -36,3 +37,4 @@
     "memory": "2GB",
     "executionRoleArn": "arn:aws:iam::497551902879:role/ecsTaskExecutionRole"
 }
+]
