@@ -1,7 +1,7 @@
 # ecs.tf
 
 resource "aws_ecs_cluster" "main" {
-  name = "${var.name}-${var.env}-cluster"
+  name = "${var.name}-${var.env}-Cluster"
 }
 
 
@@ -20,7 +20,7 @@ data "template_file" "myapp" {
 }
 
 resource "aws_ecs_task_definition" "app" {
-  family                   = "${var.name}-${var.env}-task"
+  family                   = "${var.name}-${var.env}-TASKD"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
@@ -31,7 +31,7 @@ resource "aws_ecs_task_definition" "app" {
 
 
 resource "aws_ecs_service" "main" {
-  name            = "${var.name}-${var.env}-service"
+  name            = "${var.name}-${var.env}-Service"
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = var.app_count
@@ -45,7 +45,7 @@ resource "aws_ecs_service" "main" {
 
   load_balancer {
     target_group_arn = aws_alb_target_group.app.id
-    container_name   = "${var.name}-${var.env}-container"
+    container_name   = "${var.name}-${var.env}-CONTAINER"
     container_port   = var.app_port
   }
 
