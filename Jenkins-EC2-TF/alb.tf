@@ -59,7 +59,7 @@ resource "aws_security_group_rule" "alb_erule" {
 
 #create target group
 resource "aws_lb_target_group" "jenkins" {
-  name     = "jenkins-alb-tg"
+  name     = "jenkins-alb-tg-tf"
   port     = 8080
   protocol = "HTTP"
   vpc_id   = aws_vpc.main.id
