@@ -3,7 +3,10 @@ terraform {
     aws = {
       source ="hashicorp/aws"
       version = ">=2.7.0"
-    }    
+    } 
+  mongodbatlas = {
+      source = "mongodb/mongodbatlas"
+    }  
   }
 }
 
