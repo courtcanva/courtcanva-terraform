@@ -4,7 +4,16 @@ provider "aws" {
   region  = "ap-southeast-2"   
   #shared_credentials_file = "%USERPROFILE%/.aws/credentials"
 }
-
+terraform {
+  required_providers {
+    mongodbatlas = {
+      source = "mongodb/mongodbatlas"
+    }
+    required_version = ">= 0.15"
+}
+  region  = "ap-southeast-2"   
+  #shared_credentials_file = "%USERPROFILE%/.aws/credentials"
+}
 terraform {
   backend  "s3" {
  key = "uat/database/terraform.tfstate"
