@@ -33,10 +33,6 @@ variable "atlasorgid" {
   description = "Atlas Org ID"
   
 }
-variable "atlasprojectid" {
-  description = "Atlas Project ID"
-  
-}
 variable "atlas_vpc_cidr" {
   description = "Atlas CIDR"
   
