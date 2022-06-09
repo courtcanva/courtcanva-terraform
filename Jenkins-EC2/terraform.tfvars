@@ -1,13 +1,8 @@
-aws_region ="us-west-2"
-
-
-
+aws_region ="ap-southeast-2"
 
 instance_type = "t3.medium"
 
-
 website_jenkins="jenkinssl.courtcanva.com"
-
 
 health_check_path = "/login"
 
