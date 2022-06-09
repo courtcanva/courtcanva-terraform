@@ -11,6 +11,8 @@ website_jenkins="jenkinssl.courtcanva.com"
 
 health_check_path = "/login"
 
-jenkins_volume = "vol-04c9b0eb73ca5c1cf"
+jenkins_volume = "vol-0fe89560bb55fe8d6"
 
-jenkins_eip = "eipalloc-0f4f6268f305034eb"
+jenkins_eip = "eipalloc-09155bdb05bd13d10"
+
+aw_ami="ami-0b21dcff37a8cd8a4"
