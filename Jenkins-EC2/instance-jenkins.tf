@@ -1,21 +1,21 @@
-data "aws_ami" "ubuntu" {
-  most_recent = true
+# data "aws_ami" "ubuntu" {
+#   most_recent = true
 
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
+#   filter {
+#     name   = "name"
+#     values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+#   }
 
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
+#   filter {
+#     name   = "virtualization-type"
+#     values = ["hvm"]
+#   }
 
-  owners = ["099720109477"] # Canonical
-}
+#   owners = ["099720109477"] # Canonical
+# }
 
 resource "aws_instance" "jenkins-instance" {
-  ami           = data.aws_ami.ubuntu.id
+  ami           = var.aw_ami
   instance_type = "${var.instance_type}"
 
    tags = {
@@ -29,7 +29,7 @@ resource "aws_instance" "jenkins-instance" {
   vpc_security_group_ids = [aws_security_group.sg-jenkins.id]
 
 # vailability zone
-  availability_zone       = "us-west-2a" ##data.aws_availability_zones.available.names[0]
+#   availability_zone       = "ap-southeast-2a" ##data.aws_availability_zones.available.names[0]
 
   data "aws_key_pair" "ssh" {
   key_name = "jenkinsec2keypair"
@@ -41,7 +41,7 @@ resource "aws_instance" "jenkins-instance" {
 
   
   # the public SSH key
-  key_name = data.aws_key_pair.ssh.key_name
+#   key_name = data.aws_key_pair.ssh.key_name
  
   associate_public_ip_address = true 
 
@@ -68,8 +68,8 @@ resource "aws_eip_association" "jenkins_eip_assos" {
 
 
 /*resource "aws_ebs_volume" "jenkins_volume_ebs" {
-  availability_zone = "us-west-2a"
-  size              = "50"
+  availability_zone = "ap-southeast-2a"
+  size              = "15"
   type              = "gp2"
   tags = {
     Name = "Jenknis"
