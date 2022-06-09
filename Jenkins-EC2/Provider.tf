@@ -25,7 +25,7 @@ terraform {
     bucket         = "ccsl-terraform-state-file-storage"
     key            = "UAT/JenkinsEC2/terraform.tfstate"
     region         = "us-west-2"
-    dynamodb_table = "cc-infra-tfstate"
+    dynamodb_table = "terraform-state-locking"
   }
 }
 
