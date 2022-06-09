@@ -1,16 +1,5 @@
 
-terraform {
-  required_providers {
-    mongodbatlas = {
-      source = "mongodb/mongodbatlas"
-    }
-    aws = {
-      source = "hashicorp/aws"
-    }
-  }
-  required_version = ">= 0.15"
-}
-  
+
 terraform {
  backend  "s3" {
  key = "uat/database/terraform.tfstate"
