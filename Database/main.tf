@@ -1,19 +1,22 @@
 
+terraform {
+  required_providers {
+    aws = {
+      source ="hashicorp/aws"
+      version = ">=2.7.0"
+    }    
+  }
+    mongodbatlas = {
+      source = "mongodb/mongodbatlas"
+    }
+  
+}
+
 provider "aws" {
 
   region  = "ap-southeast-2"   
-  #shared_credentials_file = "%USERPROFILE%/.aws/credentials"
 }
 
-
-terraform {
-  required_providers {
-    mongodbatlas = {
-       source = "mongodb/mongodbatlas"
-      }
-  }
-       required_version = ">= 0.15"
-} 
   
 terraform {
  backend  "s3" {
