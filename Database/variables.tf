@@ -33,6 +33,10 @@ variable "atlasorgid" {
   description = "Atlas Org ID"
   
 }
+variable "dbvpc" {
+
+}
+
 variable "atlas_vpc_cidr" {
   description = "Atlas CIDR"
   
@@ -49,4 +53,7 @@ variable "clustername" {
 variable "environment" {
   type        = string
   description = "The environment (uat, prod, test, etc.)  for the website."
+}
+variable "ECSNatGatewayEIP" {
+
 }
