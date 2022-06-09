@@ -14,6 +14,14 @@
 #   owners = ["099720109477"] # Canonical
 # }
 
+ data "aws_key_pair" "ssh" {
+  key_name = "jenkinsec2keypair"
+  filter {
+    name   = "tag:KeyPair"
+    values = ["JenkinsKey"]
+  }
+}
+
 resource "aws_instance" "jenkins-instance" {
   ami   = var.aw_ami
   instance_type = "${var.instance_type}"
@@ -29,19 +37,12 @@ resource "aws_instance" "jenkins-instance" {
   vpc_security_group_ids = [aws_security_group.sg-jenkins.id]
 
 # vailability zone
-#   availability_zone       = "ap-southeast-2a" ##data.aws_availability_zones.available.names[0]
+  availability_zone       = "ap-southeast-2a" ##data.aws_availability_zones.available.names[0]
 
-  data "aws_key_pair" "ssh" {
-  key_name = "jenkinsec2keypair"
-  filter {
-    name   = "tag:KeyPair"
-    values = ["JenkinsKey"]
-  }
-}
 
   
   # the public SSH key
-#   key_name = data.aws_key_pair.ssh.key_name
+  key_name = data.aws_key_pair.ssh.key_name
  
   associate_public_ip_address = true 
 
@@ -55,12 +56,7 @@ resource "aws_instance" "jenkins-instance" {
   }
 }
 
-/*data "aws_eip" "jenkins_eip" {
-  filter {
-    name   = "tag:EIP"
-    values = ["Jenkins"]
-  }
-}*/
+
 resource "aws_eip_association" "jenkins_eip_assos" {
   instance_id   = aws_instance.jenkins-instance.id
   allocation_id = var.jenkins_eip
