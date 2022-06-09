@@ -1,8 +1,8 @@
-# provider "aws" {
+ provider "aws" {
   alias = "acm"
  region = "ap-southeast-2"
-#   region = "us-west-2"
-#  version = "2.24"
+#region = "us-west-2"
+#version = "2.24"
 }
 
 
