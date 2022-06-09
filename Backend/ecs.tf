@@ -26,7 +26,7 @@ resource "aws_ecs_task_definition" "app" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
-  container_definitions    = "${file("taskdf.json.tpl")}"
+  container_definitions    = "${file("taskdf.json")}"
 }
 
 
