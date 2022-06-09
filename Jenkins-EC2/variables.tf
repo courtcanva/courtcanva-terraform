@@ -26,4 +26,6 @@ variable "jenkins_volume"{
 
 }
 
+variable "aw_ami"{ 
 
+}
