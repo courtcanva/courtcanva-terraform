@@ -2,7 +2,7 @@ aws_region = "ap-southeast-2"
 
 name = "CCS-F"
 
-env  ="UAT"
+env  = "UAT"
 
 ecs_task_execution_role_name = "myEcsTaskExecutionRole"
 
