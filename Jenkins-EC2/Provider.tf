@@ -22,9 +22,9 @@ default_tags {
 
 terraform {
   backend "s3" {
-    bucket         = "cc-tfstate-for-pipeline"
+    bucket         = "ccsl-terraform-state-file-storage"
     key            = "UAT/JenkinsEC2/terraform.tfstate"
-    region         = "ap-southeast-2"
+    region         = "us-west-2"
     dynamodb_table = "cc-infra-tfstate"
   }
 }
