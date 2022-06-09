@@ -1,14 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source ="hashicorp/aws"
-      version = ">=2.7.0"
-    } 
-  mongodbatlas = {
-      source = "mongodb/mongodbatlas"
-    }  
-  }
-}
 
 provider "aws" {
 
