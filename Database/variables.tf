@@ -36,7 +36,9 @@ variable "atlasorgid" {
 variable "dbvpc" {
 
 }
+variable "dbsubnet" {
 
+}
 variable "atlas_vpc_cidr" {
   description = "Atlas CIDR"
   
