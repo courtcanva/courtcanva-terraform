@@ -1,3 +1,8 @@
+provider "aws" {
+
+  region  = "ap-southeast-2"
+  #shared_credentials_file = "%USERPROFILE%/.aws/credentials"
+}
 
 provider "mongodbatlas" {
   public_key  = var.public_key
