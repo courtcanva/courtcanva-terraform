@@ -1,6 +1,6 @@
 provider "aws" {
 
-  region  = "ap-southeast-2"
+  region = "ap-southeast-2"
   #shared_credentials_file = "%USERPROFILE%/.aws/credentials"
 }
 
@@ -15,12 +15,12 @@ resource "mongodbatlas_project" "aws_atlas" {
 }
 
 resource "mongodbatlas_cluster" "cluster-atlas" {
-  project_id   = mongodbatlas_project.aws_atlas.id
-  name         = var.clustername
+  project_id = mongodbatlas_project.aws_atlas.id
+  name       = var.clustername
   # Provider Settings "block"
-  provider_name = "TENANT"
-  backing_provider_name = "AWS"
-  provider_region_name = "AP-SOUTHEAST-2"
+  provider_name               = "TENANT"
+  backing_provider_name       = "AWS"
+  provider_region_name        = "AP-SOUTHEAST-2"
   provider_instance_size_name = "M2"
 }
 //Creating the DB user + assigning permissions

@@ -8,8 +8,8 @@
 
 resource "aws_vpc" "demo" {
   cidr_block = "10.7.0.0/16"
-  
- tags = {
+
+  tags = {
     Name = "jenkins1-VPC"
   }
 
@@ -23,7 +23,7 @@ resource "aws_subnet" "demo" {
   cidr_block              = "10.7.${count.index}.0/24"
   map_public_ip_on_launch = true
   vpc_id                  = aws_vpc.demo.id
- 
+
 }
 
 resource "aws_internet_gateway" "demo" {

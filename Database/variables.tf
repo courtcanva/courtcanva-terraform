@@ -27,11 +27,11 @@ variable "atlas_dbpassword" {
 }
 variable "aws_account_id" {
   description = "My AWS Account ID"
-  
+
 }
 variable "atlasorgid" {
   description = "Atlas Org ID"
-  
+
 }
 variable "dbvpc" {
 
@@ -41,7 +41,7 @@ variable "dbsubnet" {
 }
 variable "atlas_vpc_cidr" {
   description = "Atlas CIDR"
-  
+
 }
 variable "mongodbprojectname" {
   description = "DB Name"
@@ -49,7 +49,7 @@ variable "mongodbprojectname" {
 }
 variable "clustername" {
   description = "Cluster Name"
-  
+
 }
 
 variable "environment" {

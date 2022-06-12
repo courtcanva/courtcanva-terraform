@@ -3,12 +3,12 @@ resource "aws_alb" "jenkins-alb" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
   #vpc_id             = aws_vpc.main.id
-  subnets            = [aws_subnet.main.id , aws_subnet.main2.id]
+  subnets = [aws_subnet.main.id, aws_subnet.main2.id]
   tags = {
-        Name = "Jenkins_ALB"
-        Key = "ALB"
-        Value = "jenkins"
-    }
+    Name  = "Jenkins_ALB"
+    Key   = "ALB"
+    Value = "jenkins"
+  }
 
   /* access_logs {
     bucket  = aws_s3_bucket.alb_log.bucket
@@ -23,8 +23,8 @@ resource "aws_security_group" "alb_sg" {
   name        = "alb_sg_jenkins"
   description = "alb sg with jenkins ec2 as tg "
   vpc_id      = aws_vpc.main.id
-  tags = {      
-      Name = "Jenkins_ALB_SG"
+  tags = {
+    Name = "Jenkins_ALB_SG"
   }
 }
 

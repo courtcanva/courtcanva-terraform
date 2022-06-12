@@ -14,7 +14,7 @@
 #   owners = ["099720109477"] # Canonical
 # }
 
- data "aws_key_pair" "ssh" {
+data "aws_key_pair" "ssh" {
   key_name = "jenkinsec2keypair"
   filter {
     name   = "tag:KeyPair"
@@ -23,10 +23,10 @@
 }
 
 resource "aws_instance" "jenkins-instance" {
-  ami   ="${var.aw_ami}"
-  instance_type = "${var.instance_type}"
+  ami           = var.aw_ami
+  instance_type = var.instance_type
 
-   tags = {
+  tags = {
     Name = "jenkinsmaster"
   }
 
@@ -36,20 +36,20 @@ resource "aws_instance" "jenkins-instance" {
   # the security group
   vpc_security_group_ids = [aws_security_group.sg-jenkins.id]
 
-# vailability zone
-  availability_zone       = "ap-southeast-2a" ##data.aws_availability_zones.available.names[0]
+  # vailability zone
+  availability_zone = "ap-southeast-2a" ##data.aws_availability_zones.available.names[0]
 
 
-  
+
   # the public SSH key
   key_name = data.aws_key_pair.ssh.key_name
- 
-  associate_public_ip_address = true 
+
+  associate_public_ip_address = true
 
 
   # user data
   user_data = file("jenkins_init.sh")
-  
+
   root_block_device {
     volume_type = "gp2"
     volume_size = "40"
@@ -76,7 +76,7 @@ resource "aws_eip_association" "jenkins_eip_assos" {
 
 #}
 resource "aws_volume_attachment" "jenkins_volume_ebs_att" {
-  device_name = "/dev/sdh"  #name seen in ebs volume, in ec2 it is "/dev/nvme1n1" 
+  device_name = "/dev/sdh" #name seen in ebs volume, in ec2 it is "/dev/nvme1n1" 
   volume_id   = var.jenkins_volume
   instance_id = aws_instance.jenkins-instance.id
 }

@@ -12,8 +12,8 @@ resource "aws_alb_target_group" "jenkins" {
   protocol    = "HTTP"
   vpc_id      = aws_vpc.demo.id
   target_type = "instance"
- 
- 
+
+
   health_check {
     healthy_threshold   = "3"
     interval            = "30"
@@ -25,7 +25,7 @@ resource "aws_alb_target_group" "jenkins" {
   }
 }
 
- resource "aws_alb_target_group_attachment" "jenkins" {
+resource "aws_alb_target_group_attachment" "jenkins" {
   target_group_arn = aws_alb_target_group.jenkins.arn
   target_id        = aws_instance.jenkins-instance.id
   port             = 8080
@@ -37,23 +37,23 @@ resource "aws_alb_listener" "http" {
   port              = 80
   protocol          = "HTTP"
 
-    default_action {
-   type = "redirect"
- 
-   redirect {
-     port        = 443
-     protocol    = "HTTPS"
-     status_code = "HTTP_301"
-   }
+  default_action {
+    type = "redirect"
+
+    redirect {
+      port        = 443
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
   }
 }
- resource "aws_alb_listener" "https" {
+resource "aws_alb_listener" "https" {
   load_balancer_arn = aws_alb.jenkins.id
   port              = 443
   protocol          = "HTTPS"
- 
-  ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = aws_acm_certificate.alb-jenkins.arn
+
+  ssl_policy      = "ELBSecurityPolicy-2016-08"
+  certificate_arn = aws_acm_certificate.alb-jenkins.arn
 
   default_action {
     target_group_arn = aws_alb_target_group.jenkins.id

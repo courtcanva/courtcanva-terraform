@@ -1,25 +1,25 @@
 #------------------------------JenkinsVPC-------------------------------
 resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
-   enable_dns_support = "true" #gives you an internal domain name
-    enable_dns_hostnames = "true" #gives you an internal host name
-    enable_classiclink = "false"
-    instance_tenancy = "default"   
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_support   = "true" #gives you an internal domain name
+  enable_dns_hostnames = "true" #gives you an internal host name
+  enable_classiclink   = "false"
+  instance_tenancy     = "default"
   tags = {
     Name = "Jenknis"
   }
 }
 resource "aws_subnet" "main" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = "10.0.1.0/24"
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = "10.0.1.0/24"
   availability_zone = "ap-southeast-2a"
   tags = {
     Name = "Jenkins_subnet"
   }
 }
 resource "aws_subnet" "main2" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = "10.0.2.0/24"
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = "10.0.2.0/24"
   availability_zone = "ap-southeast-2b"
   tags = {
     Name = "Jenkins_subnet2"
@@ -27,23 +27,23 @@ resource "aws_subnet" "main2" {
 }
 
 resource "aws_internet_gateway" "jenkins-igw" {
-    vpc_id = aws_vpc.main.id
-    tags = {
-        Name = "jenkins-igw"
-    }
+  vpc_id = aws_vpc.main.id
+  tags = {
+    Name = "jenkins-igw"
+  }
 }
 resource "aws_route_table" "jenkins_route_table" {
-    vpc_id = aws_vpc.main.id
-    route {
-      cidr_block = "0.0.0.0/0" 
-       gateway_id = aws_internet_gateway.jenkins-igw.id 
-    }
-    
+  vpc_id = aws_vpc.main.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.jenkins-igw.id
+  }
+
 }
 
-resource "aws_route_table_association" "jenkins-public-subnet-1"{
-    subnet_id = aws_subnet.main.id
-    route_table_id = aws_route_table.jenkins_route_table.id
+resource "aws_route_table_association" "jenkins-public-subnet-1" {
+  subnet_id      = aws_subnet.main.id
+  route_table_id = aws_route_table.jenkins_route_table.id
 }
 #------------------------------JenkinsSecurityGroup-------------------------------
 resource "aws_security_group" "jenkins_sg" {
@@ -128,11 +128,11 @@ resource "aws_instance" "jenkins_host" {
   subnet_id                   = aws_subnet.main.id
   key_name                    = "jenkinsec2keypair"
   vpc_security_group_ids      = [aws_security_group.jenkins_sg.id]
-  user_data                   = "${file("user_data.sh")}"
+  user_data                   = file("user_data.sh")
   tags = {
-    Key = "EC2"
+    Key   = "EC2"
     Value = "Jenkins"
-    Name = "Jenknis"
+    Name  = "Jenknis"
   }
   root_block_device {
     volume_type = "gp2"
@@ -162,7 +162,7 @@ resource "aws_eip_association" "jenkins_eip_assos" {
 
 }*/
 resource "aws_volume_attachment" "jenkins_volume_ebs_att" {
-  device_name = "/dev/sdh"  #name seen in ebs volume, in ec2 it is "/dev/nvme1n1" 
+  device_name = "/dev/sdh" #name seen in ebs volume, in ec2 it is "/dev/nvme1n1" 
   volume_id   = var.jenkins_volume
   instance_id = aws_instance.jenkins_host.id
 }
