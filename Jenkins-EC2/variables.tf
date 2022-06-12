@@ -3,25 +3,25 @@ variable "aws_region" {
 }
 
 
-variable "instance_type"{ 
-   
-}
-
-variable "website_jenkins"{ 
-    
-}
-
-variable "health_check_path"{ 
+variable "instance_type" {
 
 }
 
-variable "jenkins_eip"{ 
-
-}
-variable "jenkins_volume"{ 
+variable "website_jenkins" {
 
 }
 
-variable "aw_ami"{ 
+variable "health_check_path" {
+
+}
+
+variable "jenkins_eip" {
+
+}
+variable "jenkins_volume" {
+
+}
+
+variable "aw_ami" {
 
 }

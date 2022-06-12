@@ -12,9 +12,9 @@ variable "aw_ami" {
 
 
 variable "aws_eip_id" {
-  
+
 }
 
 variable "jenkins_volume" {
-  
+
 }

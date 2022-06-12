@@ -20,10 +20,10 @@ POLICY
     index_document = "index.html"
     error_document = "index.html"
   }
-tags = {
-  Name    = "Front-end S3"
-  Owner   = var.environment
-}
+  tags = {
+    Name  = "Front-end S3"
+    Owner = var.environment
+  }
   #tags = var.static_web_tags
 }
 

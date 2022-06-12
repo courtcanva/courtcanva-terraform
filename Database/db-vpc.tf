@@ -4,11 +4,11 @@ resource "aws_vpc" "primary" {
   cidr_block           = var.dbvpc
   enable_dns_hostnames = true
   enable_dns_support   = true
-  
+
   tags = {
-    name = "${var.environment}-mongodb-VPC"
+    name    = "${var.environment}-mongodb-VPC"
     purpose = "${var.environment}-mongodb"
-  }  
+  }
 }
 
 //Create IGW
@@ -36,11 +36,11 @@ resource "aws_subnet" "primary-az1" {
   cidr_block              = var.dbsubnet
   map_public_ip_on_launch = true
   availability_zone       = "${var.aws_region}a"
-  
+
   tags = {
-    name = "${var.environment}-mongodb-subnet"
+    name    = "${var.environment}-mongodb-subnet"
     purpose = "${var.environment}-mongodb"
-  }  
+  }
 }
 
 //Subnet-B
@@ -75,12 +75,12 @@ resource "aws_security_group" "primary_default" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Environment = var.environment 
-    Key = "Database"
-    Value = "${var.environment}-mongodb"
-    name = "MongoDB"
-    purpose = "MongoDB"
-  }  
+    Environment = var.environment
+    Key         = "Database"
+    Value       = "${var.environment}-mongodb"
+    name        = "MongoDB"
+    purpose     = "MongoDB"
+  }
 }
 
 /*resource "aws_vpc_peering_connection_accepter" "peer" {
