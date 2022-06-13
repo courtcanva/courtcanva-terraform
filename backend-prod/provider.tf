@@ -22,6 +22,6 @@ terraform {
   }
 }
 
-data."aws_iam_role""ecs_task_execution_role"{
+data "aws_iam_role" "ecs_task_execution_role" {
   name               = "myEcsTaskExecutionRole"
 }
