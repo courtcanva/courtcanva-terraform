@@ -57,4 +57,9 @@ variable "website_name" {
 
 variable "ecrname" {
 }
+variable "statefilepath" {
+  type = string
+}
+variable "vpc_cidr_block" {
 
+}
