@@ -59,3 +59,7 @@ variable "environment" {
 variable "ECSNatGatewayEIP" {
 
 }
+
+variable "statefilepath"{
+  
+}

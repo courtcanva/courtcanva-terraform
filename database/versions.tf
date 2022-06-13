@@ -11,7 +11,7 @@ terraform {
 }
 terraform {
   backend "s3" {
-    key            = "uat/database/terraform.tfstate"
+    key            = "${var.statefilepath}"
     region         = "ap-southeast-2"
     bucket         = "cc-terraform-state-file"
     dynamodb_table = "terraform-state-locking"
