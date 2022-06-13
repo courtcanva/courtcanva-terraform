@@ -4,5 +4,5 @@ region        = "ap-southeast-2"
 bucket_name   = "design.courtcanva.com"
 domain_name   = "design.courtcanva.com"
 environment   = "PROD"
-env           = "prod"
+statefilepath = "prod/frontend/terraform.tfstate"
 common_tags   = { name = "Prod-Front-End" }
