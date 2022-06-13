@@ -22,4 +22,7 @@ fargate_memory = "2048"
 
 website_name = "api.courtcanva.com"
 
-vpc ="  "
+vpc_cidr_block = "172.18.0.0/16"
+
+statefilepath = "prod/backend/terraform.tfstate"
+
