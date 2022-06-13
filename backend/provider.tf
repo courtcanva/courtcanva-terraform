@@ -7,14 +7,14 @@ provider "aws" {
   region = var.aws_region
   default_tags {
     tags = {
-      Environment = ${var.env}
+      Environment = "${var.env}"
       Project     = "Courtcanva"
     }
   }
 }
 terraform {
   backend "s3" {
-    key            = ${var.statefilepath}
+    key            = "${var.statefilepath}"
     region         = "ap-southeast-2"
     bucket         = "cc-terraform-state-file"
     dynamodb_table = "terraform-state-locking"
