@@ -6,7 +6,7 @@ data "aws_availability_zones" "available" {
 
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr_block
-  name       =CC-VPC-${var.env}
+  name       = "CC-VPC-${var.env}"
 }
 
 
