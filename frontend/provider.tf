@@ -14,7 +14,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    key            = var.statefile-path     #"uat/frontend/terraform.tfstate"
+    key            = var.statefilepath     #"uat/frontend/terraform.tfstate"
     region         = "ap-southeast-2"
     bucket         = "cc-terraform-state-file"
     dynamodb_table = "terraform-state-locking"
