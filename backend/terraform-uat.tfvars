@@ -24,5 +24,5 @@ website_name = "uat.api.courtcanva.com"
 
 ecrname = "cc-backend-imagerepo"
 
-
+vpc_cidr_block = "172.17.0.0/16"
 
