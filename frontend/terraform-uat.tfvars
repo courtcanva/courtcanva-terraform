@@ -4,4 +4,5 @@ region        = "ap-southeast-2"
 bucket_name   = "uat.design.courtcanva.com"
 domain_name   = "uat.design.courtcanva.com"
 environment   = "UAT"
+env           = "uat"
 common_tags   = { name = "UAT-Front-End" }

@@ -33,6 +33,8 @@ variable "aw_static_web" {
   description = "Front-End S3 name"
   type        = string
 }
-
+variable "env" {
+  type = string
+}
 
 
