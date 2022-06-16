@@ -18,7 +18,7 @@ POLICY
 
   website {
     index_document = "index.html"
-    error_document = "index.html"
+    error_document = "404.html"
   }
   tags = {
     Name  = "Front-end S3"
