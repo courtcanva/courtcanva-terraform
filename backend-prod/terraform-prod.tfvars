@@ -14,7 +14,7 @@ app_port = "8080"
 
 app_count = 1
 
-health_check_path = "/api-docs"
+health_check_path = "/health"
 
 fargate_cpu = "1024"
 
